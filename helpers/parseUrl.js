@@ -3,4 +3,4 @@ const parseUrl = (url) => {
     return match ? match[0] : 'Invalid URL';
 }
 
-module.exports = parseUrl;
+module.exports = {parseUrl};
