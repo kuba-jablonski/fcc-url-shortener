@@ -17,9 +17,11 @@ app.get('/new/:url(*)', (req, res) => {
     let code = _id.toHexString().slice(-5);
 
     if (originalUrl === 'Invalid URL') {
-        return res.send('URL is Invalid');
+        return res.send({
+            error: 'Invalid URL'
+        });
     }
-    
+
     let url = new Url({_id, originalUrl, code});
 
     url.save().then((doc) => {
@@ -27,8 +29,24 @@ app.get('/new/:url(*)', (req, res) => {
             originalUrl: doc.originalUrl,
             shortUrl: host + doc.code
         })
-    }).catch((e) => res.send(e));
+    }).catch((e) => {
+        res.send('Oops! Something went wrong');
+        console.log(e);
+    });
 });
+
+app.get('/:redirect', (req, res) => {
+    code = req.params.redirect;
+
+    Url.findOne({code}).then((doc) => {
+        res.redirect(doc.originalUrl);
+    }).catch((e) => {
+        res.status(400).send({
+            error: 'URL not found'
+        });
+        console.log(e);
+    });
+})
 
 app.listen(3000, () => {
     console.log('Server up on port 3000');
