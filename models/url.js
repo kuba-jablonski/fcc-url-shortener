@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
-const Url = mongoose.model(Url, {
+const Url = mongoose.model('Url', {
     originalUrl: {
         type: String,
         required: true
     },
-    shortUrl: {
+    code: {
         type: String,
         required: true
     }
