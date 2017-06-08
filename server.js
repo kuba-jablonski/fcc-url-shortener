@@ -47,8 +47,8 @@ app.get('/:redirect', (req, res) => {
         });
         console.log(e);
     });
-})
+});
 
-app.listen(3000, () => {
-    console.log('Server up on port 3000');
-})
+app.listen(port, () => {
+    console.log(`Server up on port ${port}`);
+});
