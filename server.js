@@ -6,7 +6,7 @@ const {Url} = require('./models/url');
 const {parseUrl} = require('./helpers/parseUrl');
 
 const port = process.env.PORT || 3000;
-const host = 'jjurl.herokuapp.com/'
+const host = 'https://jjurl.herokuapp.com/'
 
 let app = express();
 
