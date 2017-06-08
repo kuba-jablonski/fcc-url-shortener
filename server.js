@@ -5,7 +5,8 @@ const {mongoose} = require('./db/mongoose');
 const {Url} = require('./models/url');
 const {parseUrl} = require('./helpers/parseUrl');
 
-const host = 'localhost:3000/'
+const port = process.env.PORT || 3000;
+const host = 'jjurl.herokuapp.com/'
 
 let app = express();
 
