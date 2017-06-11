@@ -10,3 +10,6 @@ let sliced = hexid.slice(-5);
 console.log(id, typeof(id));
 console.log(hexid, typeof(hexid));
 console.log(sliced);
+
+
+ 
