@@ -6,7 +6,7 @@ const {Url} = require('./models/url');
 const {parseUrl} = require('./helpers/parseUrl');
 
 const port = process.env.PORT || 3000;
-const host = 'localhost:3000/'
+const host = 'jjurl.herokuapp.com'
 
 let app = express();
 
@@ -18,7 +18,7 @@ app.get('/new/:url(*)', (req, res) => {
     let code = _id.toHexString().slice(-5);
 
     if (originalUrl === 'Invalid URL') {
-        return res.send({
+        return res.status(400).send({
             error: 'Invalid URL'
         });
     }
@@ -52,3 +52,5 @@ app.get('/:redirect', (req, res) => {
 app.listen(port, () => {
     console.log(`Server up on port ${port}`);
 });
+
+module.exports = {app};

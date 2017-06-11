@@ -2,7 +2,7 @@ const expect = require('expect');
 
 const {parseUrl} = require('./parseUrl.js')
 
-describe('#parseUrl.js', () => {
+describe('parseUrl.js', () => {
     it('should return url if valid url', () => {
         let res1 = parseUrl('/new/http://google.com');
         let res2 = parseUrl('/new/https://repl.it/languages/javascript');
