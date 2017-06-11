@@ -3,9 +3,10 @@ const {ObjectID} = require('mongodb');
 
 const {mongoose} = require('./db/mongoose');
 const {Url} = require('./models/url');
+const {parseUrl} = require('./helpers/parseUrl');
 
 const port = process.env.PORT || 3000;
-const host = 'https://jjurl.herokuapp.com/'
+const host = 'localhost:3000/'
 
 let app = express();
 
@@ -13,8 +14,7 @@ app.use(express.static(__dirname + '/public'));
 
 app.get('/new/:url(*)', (req, res) => {
     let _id = new ObjectID;
-    console.log(req);
-    let originalUrl = req.url.slice(5);
+    let originalUrl = parseUrl(req.url);
     let code = _id.toHexString().slice(-5);
 
     if (originalUrl === 'Invalid URL') {

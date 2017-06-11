@@ -1,5 +1,5 @@
 const parseUrl = (url) => {
-    let match = url.match(/https?:\/\/.*\..*/);
+    let match = url.slice(5).match(/https?:\/\/.*\..*/);
     return match ? match[0] : 'Invalid URL';
 }
 
